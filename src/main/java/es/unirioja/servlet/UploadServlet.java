@@ -1,6 +1,8 @@
 package es.unirioja.servlet;
 
+import java.io.File;
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +29,21 @@ public class UploadServlet extends HttpServlet {
         System.out.println("Mime: " + ocupa);
         String fName = part.getSubmittedFileName();
         System.out.println("fName: " + fName);
-        part.write("d:/var/paw/tmp/upload/" + fName);
+//        String targetPath = buildTargetPath();
+        String targetPath = buildTargetPath(request.getServletContext());
+
+        System.out.println("Saving file as " + targetPath);
+        part.write(String.format("%s/%s", targetPath, fName));
         part.delete();
+    }
+
+    private String buildTargetPath() {
+        return "d:/var/paw/tmp/upload/";
+    }
+
+    private String buildTargetPath(ServletContext servletContext) {
+        File dir = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+        return dir.getAbsolutePath();
     }
 
 }
