@@ -37,8 +37,19 @@ public class UploadServlet extends HttpServlet {
         part.delete();
     }
 
+    private boolean isWindows() {
+        String property = System.getProperty("os.name");
+        if (property != null && property.toLowerCase().contains("win")) {
+            return true;
+        }
+        return false;
+    }
+
     private String buildTargetPath() {
-        return "d:/var/paw/tmp/upload/";
+        if (isWindows()) {
+            return "d:/paw/upload/";
+        }
+        return "/var/paw/tmp/upload/";
     }
 
     private String buildTargetPath(ServletContext servletContext) {
