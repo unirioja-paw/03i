@@ -9,12 +9,10 @@
 
         <h1>Subida de ficheros</h1>
         <form action="upload" method="POST" enctype="multipart/form-data">
-
             <div>
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" value=""/>
             </div>
-
             <div>
                 <label for="fich">Elige un fichero:</label>
                 <input type="file" name="fich" id="fich" >
