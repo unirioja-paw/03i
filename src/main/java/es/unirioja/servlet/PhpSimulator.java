@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "PhpSimulator", urlPatterns = {"*.php"})
 public class PhpSimulator extends HttpServlet {
-
+    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/dummy.jsp");
-        rd.forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.sendRedirect("https://sede.unirioja.es");
     }
-
+    
 }

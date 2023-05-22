@@ -29,8 +29,8 @@ public class UploadServlet extends HttpServlet {
         System.out.println("Mime: " + ocupa);
         String fName = part.getSubmittedFileName();
         System.out.println("fName: " + fName);
-//        String targetPath = buildTargetPath();
-        String targetPath = buildTargetPath(request.getServletContext());
+        String targetPath = buildTargetPath();
+//        String targetPath = buildTargetPath(request.getServletContext());
 
         System.out.println("Saving file as " + targetPath);
         part.write(String.format("%s/%s", targetPath, fName));
@@ -47,7 +47,7 @@ public class UploadServlet extends HttpServlet {
 
     private String buildTargetPath() {
         if (isWindows()) {
-            return "d:/paw/upload/";
+            return "d:/var/paw/tmp/upload/";
         }
         return "/var/paw/tmp/upload/";
     }

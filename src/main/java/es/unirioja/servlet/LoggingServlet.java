@@ -32,6 +32,7 @@ public class LoggingServlet extends HttpServlet {
         response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
         out.println("Pagina de prueba de registro de actividad del usuario");
+
     }
 
 }
